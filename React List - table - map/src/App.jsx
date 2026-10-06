@@ -1,7 +1,6 @@
 import './App.css'
-import ReactList from './ReactList'
-import ReactMap from './ReactMap'
-import ReactTable from './ReactTable'
+import ElectronicList from './ElectronicList'
+import ProductDetailsTable from './ProductDetailsTable'
 
 function App() {
 
@@ -9,7 +8,10 @@ function App() {
     <div>
       {/* <ReactList /> */}
       {/* <ReactMap /> */}
-      <ReactTable />
+      {/* <ReactTable /> */}
+      {/* <ElectronicList /> */}
+      <hr />
+      <ProductDetailsTable />
     </div>
   )
 }

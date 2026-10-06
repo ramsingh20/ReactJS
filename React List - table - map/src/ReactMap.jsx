@@ -1,10 +1,10 @@
 import React from 'react'
 
 const ReactMap = () => {
-        const scores = new Map();
-        scores.set("Ram ", 29)
-        scores.set("Aman", 23)
-        scores.set("Akash", 21)
+    const scores = new Map();
+    scores.set("Ram ", 29)
+    scores.set("Aman", 23)
+    scores.set("Akash", 21)
   return (
     <div>
         <h1>ReactMap</h1>
