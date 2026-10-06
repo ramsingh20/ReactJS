@@ -1,11 +1,15 @@
 import './App.css'
 import ReactList from './ReactList'
+import ReactMap from './ReactMap'
+import ReactTable from './ReactTable'
 
 function App() {
 
   return (
     <div>
-      <ReactList />
+      {/* <ReactList /> */}
+      {/* <ReactMap /> */}
+      <ReactTable />
     </div>
   )
 }
