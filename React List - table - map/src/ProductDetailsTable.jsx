@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-    const ProductDetailsTable = () => {
-        const [product, setProduct] = useState({
+const ProductDetailsTable = () => {
+    const [product, setProduct] = useState({
         id: "",
         name: "",
         price: "",
@@ -10,61 +10,101 @@ import React, { useState } from 'react'
 
     const [productTable, setProductTable] = useState([])
 
-    const handleSubmit = () => {
-        setProductTable()
-    }
-
     const handleChange = (e) => {
-        e.target.value
-        setProductTable(...prev, [id])        
+        const { name, value } = e.target
+        setProduct(prev => ({
+            ...prev,
+            [name]: value
+        }))
     }
-  return (
-    <div>
-        <form onSubmit={handleSubmit}>
-            <h1>Product Details</h1>
-            <label>Product id</label>
-            <input type="text" onChange={(e) => handleChange(e)}/>
 
-            <label>name</label>
-            <input type="text" onChange={(e) => handleChange(e)}/>
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        setProductTable(prev => [...prev, product])
 
-            <label>price</label>
-            <input type="text" onChange={(e) => handleChange(e)}/>
+        setProduct({
+            id: "",
+            name: "",
+            price: "",
+            quantity: ""
+        })
+    }
 
-            <label>quantity</label>
-            <input type="text" onChange={(e) => handleChange(e)}/>
+    function cancel() {
+       setProduct({
+            id: "",
+            name: "",
+            price: "",
+            quantity: ""
+        }) 
+    }
 
-            <button type='submit'>submit</button>
-        </form>
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <h1>Product Details</h1>
 
+                <label>Product id</label>
+                <input
+                    type="text"
+                    name="id"
+                    value={product.id}
+                    onChange={handleChange}
+                />
 
+                <label>Name</label>
+                <input
+                    type="text"
+                    name="name"
+                    value={product.name}
+                    onChange={handleChange}
+                />
 
+                <label>Price</label>
+                <input
+                    type="text"
+                    name="price"
+                    value={product.price}
+                    onChange={handleChange}
+                />
 
-        <h1>Product Details Table</h1>
-        <table border="1" cellPadding="10">
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>name</th>
-                    <th>price</th>
-                    <th>quantity</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    productTable.map((curval) => (
-                        <tr>
+                <label>Quantity</label>
+                <input
+                    type="text"
+                    name="quantity"
+                    value={product.quantity}
+                    onChange={handleChange}
+                />
+
+                <button type="submit">Submit</button>
+                <button onClick={cancel}>Cancel</button>
+            </form>
+
+            <h1>Product Details Table</h1>
+
+            <table border="1" cellPadding="10">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {productTable.map((curval, index) => (
+                        <tr key={index}>
                             <td>{curval.id}</td>
                             <td>{curval.name}</td>
-                            <td>{curval.price }</td>
+                            <td>{curval.price}</td>
                             <td>{curval.quantity}</td>
                         </tr>
-                    ))
-                }
-            </tbody>
-        </table>
-    </div>
-  )
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    )
 }
 
 export default ProductDetailsTable
