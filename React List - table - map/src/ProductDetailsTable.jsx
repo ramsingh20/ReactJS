@@ -11,7 +11,8 @@ const ProductDetailsTable = () => {
     const [productTable, setProductTable] = useState([])
 
     const handleChange = (e) => {
-        const { name, value } = e.target
+        const name= e.target.name
+        const value= e.target.value
         setProduct(prev => ({
             ...prev,
             [name]: value
@@ -50,7 +51,7 @@ const ProductDetailsTable = () => {
                     name="id"
                     value={product.id}
                     onChange={handleChange}
-                />
+                /><br />
 
                 <label>Name</label>
                 <input
@@ -58,7 +59,7 @@ const ProductDetailsTable = () => {
                     name="name"
                     value={product.name}
                     onChange={handleChange}
-                />
+                /><br />
 
                 <label>Price</label>
                 <input
@@ -66,7 +67,7 @@ const ProductDetailsTable = () => {
                     name="price"
                     value={product.price}
                     onChange={handleChange}
-                />
+                /><br />
 
                 <label>Quantity</label>
                 <input
@@ -75,9 +76,9 @@ const ProductDetailsTable = () => {
                     value={product.quantity}
                     onChange={handleChange}
                 />
-
-                <button type="submit">Submit</button>
-                <button onClick={cancel}>Cancel</button>
+<br />
+                <button type="submit">Submit</button> 
+                <button type='button' onClick={cancel}>Cancel</button>
             </form>
 
             <h1>Product Details Table</h1>
@@ -93,8 +94,8 @@ const ProductDetailsTable = () => {
                 </thead>
 
                 <tbody>
-                    {productTable.map((curval, index) => (
-                        <tr key={index}>
+                    {productTable.map((curval) => (
+                        <tr>
                             <td>{curval.id}</td>
                             <td>{curval.name}</td>
                             <td>{curval.price}</td>
